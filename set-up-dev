@@ -1,0 +1,22 @@
+#!/bin/bash
+export DEVNODES=4
+#make devrel
+
+for d in dev/dev{1,2,3,4}; do
+    $d/bin/riak start
+    $d/bin/riak ping
+done
+
+for d in dev/dev{2,3,4}; do
+    $d/bin/riak-admin cluster join 'dev1@127.0.0.1'
+done
+
+dev/dev1/bin/riak-admin cluster plan
+dev/dev1/bin/riak-admin cluster commit
+
+echo "started, pinged, clustered"
+
+dev/dev1/bin/riak-admin bucket-type create sets '{"props":{"datatype":"set"}}'
+dev/dev1/bin/riak-admin bucket-type activate sets
+
+echo "sets type created and activated"
