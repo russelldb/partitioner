@@ -1,0 +1,14 @@
+*.beam
+.eunit
+deps/*
+ebin/*
+rel/bigset
+dev
+apps/bigset/src/*
+*.o
+*.plt
+.local_dialyzer_plt
+erl_crash.dump
+.concrete/DEV_MODE
+rebar
+.eqc-info
