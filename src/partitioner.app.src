@@ -1,0 +1,12 @@
+{application, partitioner,
+ [
+  {description, ""},
+  {vsn, git},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  lager
+                 ]},
+  {env, []}
+ ]}.
